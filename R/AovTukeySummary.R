@@ -9,6 +9,8 @@
 #' @examples
 #' Omitted
 #' @export
+#' @import dplyr
+#' @import agricolae
 Aov1TukeySummary <- function(df, Vari., Factor, DeciNum = rep(2, length(Vari.))){
   HSD_fun <- function(q,s,n_vector,n_group){
     return(q * sqrt(s * sum(1/n_vector)/n_group))
@@ -50,6 +52,8 @@ Aov1TukeySummary <- function(df, Vari., Factor, DeciNum = rep(2, length(Vari.)))
 #' @examples
 #' Omitted
 #' @export
+#' @import dplyr
+#' @import agricolae
 Aov2TukeySummary <- function(df, Vari., Factor1, Factor2, DeciNum = rep(2, length(Vari.))){
   HSD_fun <- function(q,s,n_vector,n_group){
     return(q * sqrt(s * sum(1/n_vector)/n_group))
@@ -121,6 +125,8 @@ Aov2TukeySummary <- function(df, Vari., Factor1, Factor2, DeciNum = rep(2, lengt
 #' @examples
 #' Omitted
 #' @export
+#' @import dplyr
+#' @import agricolae
 Aov3TukeySummary <- function(df, Vari., Factor1, Factor2, Factor3, DeciNum = rep(2, length(Vari.))){
   HSD_fun <- function(q,s,n_vector,n_group){
     return(q * sqrt(s * sum(1/n_vector)/n_group))

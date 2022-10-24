@@ -1,4 +1,4 @@
-Package: HYtoolkit
+Package: FermentKinetics
 Title: Data analysis and visualisation mainly for fermentation study
 Version: 0.0.0.9000
 Authors@R: 
@@ -12,6 +12,10 @@ Imports:
         agricolae,
         ggplot2,
         RColorBrewer,
+        reshape2,
+        ggrepel,
+        tidyverse,
+        patchwork,
         readxl,
         writexl
 Encoding: UTF-8
