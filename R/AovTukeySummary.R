@@ -51,6 +51,10 @@ Aov1TukeySummary <- function(df, Vari., Factor, DeciNum = rep(2, length(Vari.)))
 #' Omitted
 #' @export
 Aov2TukeySummary <- function(df, Vari., Factor1, Factor2, DeciNum = rep(2, length(Vari.))){
+  HSD_fun <- function(q,s,n_vector,n_group){
+    return(q * sqrt(s * sum(1/n_vector)/n_group))
+  }
+
   tmpdf <- mutate(df, Grp1 = df[,Factor1], Grp2 = df[,Factor2])
   RowNm <- c(tmpdf$Grp1 %>% unique(), paste0("P_", Factor1), paste0("MSD_", Factor1),
              "Factor2", tmpdf$Grp2 %>% unique(), paste0("P_", Factor2), paste0("MSD_", Factor2),
@@ -118,6 +122,10 @@ Aov2TukeySummary <- function(df, Vari., Factor1, Factor2, DeciNum = rep(2, lengt
 #' Omitted
 #' @export
 Aov3TukeySummary <- function(df, Vari., Factor1, Factor2, Factor3, DeciNum = rep(2, length(Vari.))){
+  HSD_fun <- function(q,s,n_vector,n_group){
+    return(q * sqrt(s * sum(1/n_vector)/n_group))
+  }
+
   tmpdf <- mutate(df, Grp1 = df[,Factor1], Grp2 = df[,Factor2], Grp3 = df[,Factor3])
   RowNm <- c(tmpdf$Grp1 %>% unique(), paste0("P_", Factor1), paste0("MSD_", Factor1),
              "Factor2", tmpdf$Grp2 %>% unique(), paste0("P_", Factor2), paste0("MSD_", Factor2),
