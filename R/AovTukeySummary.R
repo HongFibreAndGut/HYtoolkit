@@ -59,7 +59,7 @@ Aov2TukeySummary <- function(df, Vari., Factor1, Factor2, DeciNum = rep(2, lengt
   RowNm <- c(tmpdf$Grp1 %>% unique(), paste0("P_", Factor1), paste0("MSD_", Factor1),
              "Factor2", tmpdf$Grp2 %>% unique(), paste0("P_", Factor2), paste0("MSD_", Factor2),
              "Interaction", paste0("P_",Factor1,":",Factor2),
-             "Eta2", paste0("Eta2_",Factor1),paste0("Eta2_",Factor2), paste0("Eta2_",Factor1,":",Factor2))
+             "Eta2", paste0("Eta2_",Factor1),paste0("Eta2_",Factor2), paste0("Eta2_",Factor1,":",Factor2), "Eta2_Residuals")
   FinalTab <- matrix(ncol = length(Vari.)+1,
                      nrow = length(RowNm)) %>% data.frame() %>% setNames(., c("Factor1",Vari.))
   FinalTab$Factor1 <- RowNm
@@ -81,7 +81,7 @@ Aov2TukeySummary <- function(df, Vari., Factor1, Factor2, DeciNum = rep(2, lengt
     FinalTab[FinalTab$Factor1 == paste0("Eta2_", Factor1), y] <- (Prob[Factor1,"Sum Sq"] / sum(Prob[,"Sum Sq"])) %>% sprintf("%.4f",.)
     FinalTab[FinalTab$Factor1 == paste0("Eta2_", Factor2), y] <- (Prob[Factor2,"Sum Sq"] / sum(Prob[,"Sum Sq"])) %>% sprintf("%.4f",.)
     FinalTab[FinalTab$Factor1 == paste0("Eta2_",Factor1, ":",Factor2), y] <- (Prob[paste0(Factor1, ":",Factor2),"Sum Sq"] / sum(Prob[,"Sum Sq"])) %>% sprintf("%.4f",.)
-
+    FinalTab[FinalTab$Factor1 == paste0("Eta2_Residuals"), y] <- (Prob["Residuals","Sum Sq"] / sum(Prob[,"Sum Sq"])) %>% sprintf("%.4f",.)
     # MSD and mean values
     tmp_model1 <- aov(as.formula(paste0(y,"~", Factor1, "*", Factor2)), data = tmpdf)
     tmp_Tukey_result <- HSD.test(tmp_model1,Factor1, group = T)
@@ -131,7 +131,7 @@ Aov3TukeySummary <- function(df, Vari., Factor1, Factor2, Factor3, DeciNum = rep
              "Factor2", tmpdf$Grp2 %>% unique(), paste0("P_", Factor2), paste0("MSD_", Factor2),
              "Factor3", tmpdf$Grp3 %>% unique(), paste0("P_", Factor3), paste0("MSD_", Factor3),
              "Interaction", paste0("P_",Factor1,":",Factor2), paste0("P_",Factor1,":",Factor3), paste0("P_",Factor2,":",Factor3), paste0("P_",Factor1,":",Factor2,":",Factor3),
-             "Eta2", paste0("Eta2_",Factor1),paste0("Eta2_",Factor2), paste0("Eta2_",Factor3), paste0("Eta2_",Factor1,":",Factor2), paste0("Eta2_",Factor1,":",Factor3), paste0("Eta2_",Factor2,":",Factor3),paste0("Eta2_",Factor1,":",Factor2,":",Factor3))
+             "Eta2", paste0("Eta2_",Factor1),paste0("Eta2_",Factor2), paste0("Eta2_",Factor3), paste0("Eta2_",Factor1,":",Factor2), paste0("Eta2_",Factor1,":",Factor3), paste0("Eta2_",Factor2,":",Factor3),paste0("Eta2_",Factor1,":",Factor2,":",Factor3), "Eta2_Residuals")
   FinalTab <- matrix(ncol = length(Vari.)+1,
                      nrow = length(RowNm)) %>% data.frame() %>% setNames(., c("Factor1",Vari.))
   FinalTab$Factor1 <- RowNm
@@ -161,6 +161,7 @@ Aov3TukeySummary <- function(df, Vari., Factor1, Factor2, Factor3, DeciNum = rep
     FinalTab[FinalTab$Factor1 == paste0("Eta2_",Factor1, ":",Factor3), y] <- (Prob[paste0(Factor1, ":",Factor3),"Sum Sq"] / sum(Prob[,"Sum Sq"])) %>% sprintf("%.4f",.)
     FinalTab[FinalTab$Factor1 == paste0("Eta2_",Factor2, ":",Factor3), y] <- (Prob[paste0(Factor2, ":",Factor3),"Sum Sq"] / sum(Prob[,"Sum Sq"])) %>% sprintf("%.4f",.)
     FinalTab[FinalTab$Factor1 == paste0("Eta2_",Factor1, ":", Factor2, ":", Factor3), y] <- (Prob[paste0(Factor1, ":",Factor2, ":", Factor3),"Sum Sq"] / sum(Prob[,"Sum Sq"])) %>% sprintf("%.4f",.)
+    FinalTab[FinalTab$Factor1 == paste0("Eta2_Residuals"), y] <- (Prob["Residuals","Sum Sq"] / sum(Prob[,"Sum Sq"])) %>% sprintf("%.4f",.)
     # MSD and mean values
     tmp_model1 <- aov(as.formula(paste0(y,"~", Factor1, "*", Factor2,"*", Factor3)), data = tmpdf)
     tmp_Tukey_result <- HSD.test(tmp_model1,Factor1, group = T)
