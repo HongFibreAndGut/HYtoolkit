@@ -47,5 +47,6 @@ An EndproductInfo.xlsx file is requried to include the chemical shift range and 
 my github repository hyfood/DeomoData/EndproductInfo.xlsx. The DemoData Directory also includes a Bruker output directory as a demo for this function.
 }
 \examples{
-Omnitted
+Bruker2conc(BrukerDir = "./DemoBrukerDir")
+
 }

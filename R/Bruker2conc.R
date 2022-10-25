@@ -18,7 +18,18 @@
 #' @return Returns a Directory containing the intergral detail plots, and two excel files showing the relative area and the concentration in mM.
 #' @export
 #'
-#' @examples Omnitted
+#' @examples
+#' Bruker2conc(BrukerDir = "./DemoBrukerDir")
+#'
+#' @import data.table
+#' @import dplyr
+#' @import readxl
+#' @import writexl
+#' @import hyperSpec
+#' @import mrbin
+#' @import stringr
+#' @import reshape2
+#' @import patchwork
 Bruker2conc <- function(BrukerDir,
                         InRef = "TSP",
                         InRef2 = "4-Methylvalerate",
