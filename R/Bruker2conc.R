@@ -1,9 +1,9 @@
 #' @title Bruker2conc
 #'
 #' @description Convert Bruker output files to final concentration. All spectra should be at least displayed once in Topspin.
-#' An EndproductInfo.xlsx file is requried to include the chemical shift range and the calculation information. Please download a demo from 
+#' An EndproductInfo.xlsx file is requried to include the chemical shift range and the calculation information. Please download a demo from
 #' my github repository hyfood/DeomoData/EndproductInfo.xlsx. The DemoData Directory also includes a Bruker output directory as a demo for this function.
-#' 
+#'
 #' @param BrukerDir A Character. Path to the folder where all the Bruker out directories are stored
 #' @param InRef A character. Internal standard. Default - "TSP"
 #' @param InRef2 A character OR False. A second internal standard. Default = "4-Methylvalerate"
@@ -15,10 +15,10 @@
 #' @param EndProductInfo Character. Path to the EndProductInfo.xlsx file. This file should include two sheets, namely ChemRange and Calculation. Default - "EndProductInfo.xlsx"
 #' @param OutDir Character. Path to export resulting files. Default - getwd
 #'
-#' @return
+#' @return Returns a Directory containing the intergral detail plots, and two excel files showing the relative area and the concentration in mM.
 #' @export
 #'
-#' @examples
+#' @examples Omnitted
 Bruker2conc <- function(BrukerDir,
                         InRef = "TSP",
                         InRef2 = "4-Methylvalerate",

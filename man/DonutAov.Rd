@@ -2,7 +2,7 @@
 % Please edit documentation in R/DonutAov.R
 \name{DonutAov}
 \alias{DonutAov}
-\title{Making Donut charts summarising the Eta2 of two-way or three-way ANOVA}
+\title{DonutAov}
 \usage{
 DonutAov(
   aovdf,
@@ -48,7 +48,7 @@ DonutAov(
 One or more .png files
 }
 \description{
-Making Donut charts summarising the Eta2 of two-way or three-way ANOVA
+Making Donut charts summarising the Eta2 of two-way or three-way ANOVA based on Aov2TukeySummary OR Aov2TukeySummary output data.frame
 }
 \examples{
 Omitted

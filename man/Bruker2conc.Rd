@@ -38,8 +38,14 @@ Bruker2conc(
 
 \item{OutDir}{Character. Path to export resulting files. Default - getwd}
 }
+\value{
+Returns a Directory containing the intergral detail plots, and two excel files showing the relative area and the concentration in mM.
+}
 \description{
 Convert Bruker output files to final concentration. All spectra should be at least displayed once in Topspin.
 An EndproductInfo.xlsx file is requried to include the chemical shift range and the calculation information. Please download a demo from
 my github repository hyfood/DeomoData/EndproductInfo.xlsx. The DemoData Directory also includes a Bruker output directory as a demo for this function.
+}
+\examples{
+Omnitted
 }

@@ -1,4 +1,6 @@
-#' Making Donut charts summarising the Eta2 of two-way or three-way ANOVA
+#' @title DonutAov
+#'
+#' @description Making Donut charts summarising the Eta2 of two-way or three-way ANOVA based on Aov2TukeySummary OR Aov2TukeySummary output data.frame
 #'
 #' @param aovdf The data.frame output from Aov2TukeySummary OR Aov3TukeySummary function
 #' @param Vari. A character vector contaning variables to make donut charts
