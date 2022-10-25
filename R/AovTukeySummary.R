@@ -1,5 +1,7 @@
-#' Summarize one-way anova and Tukey test results.
-#' Gives the mean value, grouping label, probability, MSD value
+#' @title Aov1TukeySummary
+#'
+#' @description Summarize one-way anova and Tukey test results
+#' Gives the mean value, grouping label, probability including interaction, MSD value
 #'
 #' @param df A data.frame
 #' @param Vari. A character vacter, column names of the variables
@@ -40,7 +42,9 @@ Aov1TukeySummary <- function(df, Vari., Factor, DeciNum = rep(2, length(Vari.)))
   return(FinalTab)
 }
 
-#' Summarize two-way anova and Tukey test results
+#' @title Aov2TukeySummary
+#'
+#' @description Summarize two-way anova and Tukey test results
 #' Gives the mean value, grouping label, probability including interactions, MSD value, Eta_square
 #'
 #' @param df A data.frame
@@ -112,7 +116,9 @@ Aov2TukeySummary <- function(df, Vari., Factor1, Factor2, DeciNum = rep(2, lengt
   return(FinalTab)
 }
 
-#' Summarize two-way anova and Tukey test results
+#' @title Aov3TukeySummary
+#'
+#' @description Summarize two-way anova and Tukey test results
 #' Gives the mean value, grouping label, probability including interactions, MSD value, Eta_square
 #'
 #' @param df A data.frame

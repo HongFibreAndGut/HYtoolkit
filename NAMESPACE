@@ -3,6 +3,7 @@
 export(Aov1TukeySummary)
 export(Aov2TukeySummary)
 export(Aov3TukeySummary)
+export(Bruker2conc)
 export(DonutAov)
 import(agricolae)
 import(dplyr)

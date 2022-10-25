@@ -2,8 +2,7 @@
 % Please edit documentation in R/AovTukeySummary.R
 \name{Aov3TukeySummary}
 \alias{Aov3TukeySummary}
-\title{Summarize two-way anova and Tukey test results
-Gives the mean value, grouping label, probability including interactions, MSD value, Eta_square}
+\title{Aov3TukeySummary}
 \usage{
 Aov3TukeySummary(
   df,

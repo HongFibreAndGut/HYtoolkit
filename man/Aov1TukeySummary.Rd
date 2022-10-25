@@ -2,8 +2,7 @@
 % Please edit documentation in R/AovTukeySummary.R
 \name{Aov1TukeySummary}
 \alias{Aov1TukeySummary}
-\title{Summarize one-way anova and Tukey test results.
-Gives the mean value, grouping label, probability, MSD value}
+\title{Aov1TukeySummary}
 \usage{
 Aov1TukeySummary(df, Vari., Factor, DeciNum = rep(2, length(Vari.)))
 }
@@ -20,8 +19,8 @@ Aov1TukeySummary(df, Vari., Factor, DeciNum = rep(2, length(Vari.)))
 A data.frame
 }
 \description{
-Summarize one-way anova and Tukey test results.
-Gives the mean value, grouping label, probability, MSD value
+Summarize one-way anova and Tukey test results
+Gives the mean value, grouping label, probability including interaction, MSD value
 }
 \examples{
 Omitted
