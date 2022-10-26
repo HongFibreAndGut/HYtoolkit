@@ -21,8 +21,7 @@
 #' @examples
 #' Bruker2conc(BrukerDir = "./DemoBrukerDir")
 #'
-#' @import data.table
-#' @import dplyr
+#' @importFrom dplyr %>% arrange
 #' @import readxl
 #' @import writexl
 #' @import hyperSpec
@@ -169,18 +168,15 @@ for (f in 1: length(datalist)){
 ConcTable <- SmpRelArea[,-which(colnames(SmpRelArea) == InRef)]
 
 for (i in 2: ncol(ConcTable)){
- MetaNm <- colnames(ConcTable)[i]
- ConcTable[,MetaNm] <- SmpRelArea[,MetaNm] *
-   Calculation[Calculation$Metabolite == MetaNm,"ProtonInRef"] *
-   Calculation[Calculation$Metabolite == MetaNm,"MwInRef"] /
-   Calculation[Calculation$Metabolite == MetaNm,"ProtonSmp"] *
-   Calculation[Calculation$Metabolite == MetaNm,"DilutionFactor"] *
-   Calculation[Calculation$Metabolite == MetaNm,"PkFactor"]
- if (T %in% (ConcTable$Sample %in% colnames(Calculation))){
-   for (j in ConcTable$Sample[ConcTable$Sample %in% colnames(Calculation)]){
-     ConcTable[ConcTable$Sample == j,-1] <- ConcTable[ConcTable$Sample == j,-1] *  Calculation[,j]
-   }
- }
+  MetaNm <- colnames(ConcTable)[i]
+  ConcTable[,MetaNm] <- SmpRelArea[,MetaNm] *
+    (Calculation[Calculation$Metabolite == MetaNm,"Calculation"]) %>% parse(text = .) %>% eval()
+}
+if (T %in% (ConcTable$Sample %in% colnames(Calculation))){
+  for (j in ConcTable$Sample[ConcTable$Sample %in% colnames(Calculation)]){
+    Calculation[,j][is.na(Calculation[,j])] <- 1
+    ConcTable[ConcTable$Sample == j,-1] <- ConcTable[ConcTable$Sample == j,-1] *  Calculation[,j]
+  }
 }
 
 ConcTable1 <- ConcTable
