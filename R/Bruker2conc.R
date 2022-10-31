@@ -86,7 +86,6 @@ if (!"All" %in% Samp2run) {
   SampleNm <- Samp2run
 }
 
-
 ReadNMRxy <- function(datapath){
   xy <- readBruker(datapath, dimension = "1D")[[1]]
   return(data.frame(ChemShift = names(xy) %>% as.numeric(),
