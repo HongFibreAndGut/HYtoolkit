@@ -1,0 +1,23 @@
+Package: FermentKinetics
+Title: Data analysis and visualisation mainly for fermentation study
+Version: 0.0.0.9000
+Authors@R: 
+    person("Hong", "Yao", , "hong.yao@uq.net.au", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: 
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Imports: 
+        dplyr,
+        agricolae,
+        ggplot2,
+        RColorBrewer,
+        reshape2,
+        ggrepel,
+        tidyverse,
+        patchwork,
+        readxl,
+        writexl
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
