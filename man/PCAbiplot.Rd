@@ -119,7 +119,7 @@ Returns a list. See description
 \description{
 This function returns a list for information of PCA biplot, and a ggplot object (list[\link{4}] in the list) which can be export directly. Otherwise, you can generate your own
 ggplot object just from the first three elements. list[\link{1}] is a data.frame showing the point for PCA plot and the grouping information.
-list[\link{2}] is a vector of the percentages of each PC. list[\link{3}] is a data.frame giving the information. You can generate the arrows by: geom_segment(data=list[\link{3}], aes(x=0, y=0, xend=v1, yend=v2))
+list[\link{2}] is a vector of the percentages of each PC. list[\link{3}] is a data.frame for loadings (rotation). list[\link{4}] is a data.frame giving the information from which you can generate the arrows by: geom_segment(data=list[\link{3}], aes(x=0, y=0, xend=v1, yend=v2))
 }
 \examples{
 Download a demo data from my github: hyfood/DemoData/PCAbiplotDemo.txt, and read into R.

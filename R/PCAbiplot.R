@@ -1,7 +1,7 @@
 #' @title PCAbiplot
 #' @description This function returns a list for information of PCA biplot, and a ggplot object (list[[4]] in the list) which can be export directly. Otherwise, you can generate your own
 #' ggplot object just from the first three elements. list[[1]] is a data.frame showing the point for PCA plot and the grouping information.
-#' list[[2]] is a vector of the percentages of each PC. list[[3]] is a data.frame giving the information. You can generate the arrows by: geom_segment(data=list[[3]], aes(x=0, y=0, xend=v1, yend=v2))
+#' list[[2]] is a vector of the percentages of each PC. list[[3]] is a data.frame for loadings (rotation). list[[4]] is a data.frame giving the information from which you can generate the arrows by: geom_segment(data=list[[3]], aes(x=0, y=0, xend=v1, yend=v2))
 #'
 #' @param df A data.frame. Can include the grouping info column(s).
 #' @param Vari. Character vector. Which variables (columns) are used.
@@ -109,6 +109,7 @@ PCAbiplot <- function(# PCA info
   # do biplot
   data <- data.frame(fit$x)
   datapc <- data.frame(varnames=rownames(fit$rotation), fit$rotation)
+  datapc0 <- datapc
   mult <- ifelse(is.null(SegLengthMultiply),  min(
     (max(data[,"PC2"]) - min(data[,"PC2"])/(max(datapc[,"PC2"])-min(datapc[,"PC2"]))),
     (max(data[,"PC1"]) - min(data[,"PC1"])/(max(datapc[,"PC1"])-min(datapc[,"PC1"])))),
@@ -189,10 +190,11 @@ PCAbiplot <- function(# PCA info
   ReturnList <- list()
   ReturnList[[1]] <- data
   ReturnList[[2]] <- PCvector
-  ReturnList[[3]] <- datapc
+  ReturnList[[3]] <- datapc0
+  ReturnList[[4]] <- datapc
   ReturnList[[4]] <- p
 
-  names(ReturnList) <- c("PCandGrpInfo","PCpercent","Arrow2geom_segment","ggplotOut")
+  names(ReturnList) <- c("PCandGrpInfo","PCpercent","Loadings","Segment4biplot","ggplotOut")
 
   return(ReturnList)
 }
