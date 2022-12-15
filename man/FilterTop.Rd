@@ -30,6 +30,6 @@ df <- data.frame(Taxon = paste0("Taxon_",1:10),
                 y = abs(rnorm(10,1.5)),
                 z = abs(rnorm(10,3)))
 df <- RelAbun(df, AbunCol = c(2:4))
-Top5df <- FilterTop(df, TaxonCol = "Taxon",AbunCol = c(2:4), Threshold = 5)
+Top5df <- FilterTop(df, TaxonCol = "Taxon",AbunCol = c(2:4), Threshold = 5, Others = T)
 
 }

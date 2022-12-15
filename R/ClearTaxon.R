@@ -45,8 +45,8 @@ ClearGenusSilva138 <- function(raw_taxon){
                                                                           paste("unclassified",gsub(".*;c__(.+?);.*","\\1",raw_taxon)),
                                                                           ifelse(grepl(";p__", raw_taxon),
                                                                                  paste("unclassified",gsub(".*;p__(.+?);.*","\\1",raw_taxon)),
-                                                                                 ifelse(grepl("k__", raw_taxon),
-                                                                                        paste("unclassified",gsub(".*k__(.+?);.*","\\1",raw_taxon)),
+                                                                                 ifelse(grepl("d__", raw_taxon),
+                                                                                        paste("unclassified",gsub(".*d__(.+?);.*","\\1",raw_taxon)),
                                                                                         "unassgined taxon"
                                                                                  ))))))))))))
   return(cleargenus)

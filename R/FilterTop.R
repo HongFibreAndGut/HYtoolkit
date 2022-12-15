@@ -8,14 +8,14 @@
 #'
 #' @return Returns a data.frame with the top abundant taxa
 #' @export
-#'
+#' @importFrom dplyr arrange
 #' @examples library(FermentKinetics)
 #' df <- data.frame(Taxon = paste0("Taxon_",1:10),
 #'                 x = abs(rnorm(10,2)),
 #'                 y = abs(rnorm(10,1.5)),
 #'                 z = abs(rnorm(10,3)))
 #' df <- RelAbun(df, AbunCol = c(2:4))
-#' Top5df <- FilterTop(df, TaxonCol = "Taxon",AbunCol = c(2:4), Threshold = 5)
+#' Top5df <- FilterTop(df, TaxonCol = "Taxon",AbunCol = c(2:4), Threshold = 5, Others = T)
 #'
 
 FilterTop <- function(df,
@@ -23,14 +23,14 @@ FilterTop <- function(df,
                       AbunCol,
                       Others = F,
                       Threshold){
-  df1 <- df[apply(df[,AbunCol],1,min)>=Threshold,]
+  df$AbunSum <- rowSums(df[,AbunCol])
+  df <- arrange(df, desc(AbunSum))
+  df <- df[,-ncol(df)]
+  df1 <- df[apply(df[,AbunCol],1,max)>=Threshold,]
   if (Others == T){
-    OtherAbun <- 100 - apply(df1[,AbunCol],2,sum)
+    OtherAbun <- apply(df[,AbunCol],2,sum) - apply(df1[,AbunCol],2,sum)
     df1[nrow(df1)+1,AbunCol] <- OtherAbun
     df1[nrow(df1),TaxonCol] <- "Others"
   }
   return(df1)
 }
-
-
-
